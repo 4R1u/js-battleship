@@ -115,6 +115,10 @@ describe("sinking a vertical ship", () => {
     test("ship is sunken", () => {
         expect(board.ships[0][0].isSunk()).toBe(true);
     });
+
+    test("reports all ships sunken", () => {
+        expect(board.areAllShipsSunken()).toBe(true);
+    });
 });
 
 describe("attacking and missing", () => {

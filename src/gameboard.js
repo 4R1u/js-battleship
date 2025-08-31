@@ -53,6 +53,14 @@ class Gameboard {
                 }
         }
     }
+
+    areAllShipsSunken() {
+        for (ship of this.#ships)
+            if (false == ship[0].isSunk())
+                return false;
+
+        return true;
+    }
 }
 
 module.exports = Gameboard;
