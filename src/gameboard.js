@@ -51,7 +51,7 @@ class Gameboard {
             return;
         } else if (this.#board[coords[0]][coords[1]] == 's') {
             this.#board[coords[0]][coords[1]] = 'h';
-            for (ship of this.#ships)
+            for (let ship of this.#ships)
                 if ((!ship[2] && ship[1][0] == coords[0] && ship[1][1] <= coords[1] && ship[1][1] + ship[0].length > coords[1]) ||
                     ((ship[2] && ship[1][1] == coords[1] && ship[1][0] <= coords[0] && ship[1][0] + ship[0].length > coords[0]))) {
                     ship[0].hit();
@@ -61,7 +61,7 @@ class Gameboard {
     }
 
     areAllShipsSunken() {
-        for (ship of this.#ships)
+        for (let ship of this.#ships)
             if (false == ship[0].isSunk())
                 return false;
 
