@@ -34,7 +34,13 @@ class Gameboard {
     }
 
     get own_view() {
-        return this.#board;
+        const own_view = [];
+        for (let i = 0; i < 10; ++i) {
+            own_view.push([])
+            for (let j = 0; j < 10; ++j)
+                own_view[i].push(this.#board[i][j]);
+        }
+        return own_view;
     }
 
     receiveAttack(coords) {
