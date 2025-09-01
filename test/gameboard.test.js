@@ -17,12 +17,27 @@ describe("two ships placed separately", () => {
         expect(board.own_view[1][3]).toBe('s');
     });
 
+    test("first ship can't be seen from the enemy's POV", () => {
+        expect(board.opp_view[1][0]).toBe('e');
+        expect(board.opp_view[1][1]).toBe('e');
+        expect(board.opp_view[1][2]).toBe('e');
+        expect(board.opp_view[1][3]).toBe('e');
+    });
+
     test("second ship placed", () => {
         expect(board.own_view[3][3]).toBe('s');
         expect(board.own_view[4][3]).toBe('s');
         expect(board.own_view[5][3]).toBe('s');
         expect(board.own_view[6][3]).toBe('s');
         expect(board.own_view[7][3]).toBe('s');
+    });
+
+    test("second ship can't be seen from the enemy's POV", () => {
+        expect(board.opp_view[3][3]).toBe('e');
+        expect(board.opp_view[4][3]).toBe('e');
+        expect(board.opp_view[5][3]).toBe('e');
+        expect(board.opp_view[6][3]).toBe('e');
+        expect(board.opp_view[7][3]).toBe('e');
     });
 
     test("ship list has two ships", () => {
@@ -44,6 +59,13 @@ describe("placing ships on top of each other", () => {
         expect(board.own_view[0][1]).toBe('s');
         expect(board.own_view[0][2]).toBe('s');
         expect(board.own_view[0][3]).toBe('s');
+    });
+
+    test("first ship can't be seen from the enemy's POV", () => {
+        expect(board.opp_view[0][0]).toBe('e');
+        expect(board.opp_view[0][1]).toBe('e');
+        expect(board.opp_view[0][2]).toBe('e');
+        expect(board.opp_view[0][3]).toBe('e');
     });
 
     test("second ship _not_ placed", () => {
@@ -69,6 +91,10 @@ describe("missing a hit", () => {
     test("is a miss", () => {
         expect(board.own_view[0][0]).toBe('m');
     });
+
+    test("opponent sees miss", () => {
+        expect(board.opp_view[0][0]).toBe('m');
+    });
 });
 
 describe("sinking a horizontal ship", () => {
@@ -87,6 +113,13 @@ describe("sinking a horizontal ship", () => {
         expect(board.own_view[2][4]).toBe('h');
         expect(board.own_view[2][5]).toBe('h');
         expect(board.own_view[2][6]).toBe('h');
+    });
+
+    test("opponent sees hits", () => {
+        expect(board.opp_view[2][3]).toBe('h');
+        expect(board.opp_view[2][4]).toBe('h');
+        expect(board.opp_view[2][5]).toBe('h');
+        expect(board.opp_view[2][6]).toBe('h');
     });
 
     test("ship is sunken", () => {
@@ -112,6 +145,13 @@ describe("sinking a vertical ship", () => {
         expect(board.own_view[6][2]).toBe('h');
     });
 
+    test("opponent sees hits", () => {
+        expect(board.opp_view[3][2]).toBe('h');
+        expect(board.opp_view[4][2]).toBe('h');
+        expect(board.opp_view[5][2]).toBe('h');
+        expect(board.opp_view[6][2]).toBe('h');
+    });
+
     test("ship is sunken", () => {
         expect(board.ships[0][0].isSunk()).toBe(true);
     });
@@ -132,9 +172,9 @@ describe("attacking and missing", () => {
     });
 
     test("the spaces hit are marked as misses", () => {
-        expect(board.own_view[3][2]).toBe('m');
-        expect(board.own_view[4][2]).toBe('m');
-        expect(board.own_view[5][2]).toBe('m');
-        expect(board.own_view[6][2]).toBe('m');
+        expect(board.opp_view[3][2]).toBe('m');
+        expect(board.opp_view[4][2]).toBe('m');
+        expect(board.opp_view[5][2]).toBe('m');
+        expect(board.opp_view[6][2]).toBe('m');
     });
 });

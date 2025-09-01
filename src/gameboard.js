@@ -43,6 +43,15 @@ class Gameboard {
         return own_view;
     }
 
+    get opp_view() {
+        const opp_view = this.own_view;
+        for (let i = 0; i < 10; ++i)
+            for (let j = 0; j < 10; ++j)
+                if (opp_view[i][j] == 's') opp_view[i][j] = 'e';
+
+        return opp_view;
+    }
+
     receiveAttack(coords) {
         if (['h', 'm'].includes(this.#board[coords[0]][coords[1]]))
             return;
