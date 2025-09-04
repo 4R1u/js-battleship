@@ -6,7 +6,7 @@ const Ship = require('../src/ship');
 describe("after placing one ship of two blocks", () => {
     let player;
     beforeAll(() => {
-        let board = new Gameboard;
+        let board = new Gameboard(false);
         board.place(new Ship(2), [0, 0], false);
         player = new Player(board);
     });

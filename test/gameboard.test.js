@@ -5,7 +5,7 @@ describe("two ships placed separately", () => {
     let board;
 
     beforeAll(() => {
-        board = new Gameboard;
+        board = new Gameboard(false);
         board.place(new Ship(4), [1, 0], false);
         board.place(new Ship(5), [3, 3], true);
     });
@@ -49,7 +49,7 @@ describe("placing ships on top of each other", () => {
     let board;
 
     beforeAll(() => {
-        board = new Gameboard;
+        board = new Gameboard(false);
         board.place(new Ship(4), [0, 0], false);
         board.place(new Ship(4), [0, 0], true);
     });
@@ -84,7 +84,7 @@ describe("missing a hit", () => {
     let board;
 
     beforeAll(() => {
-        board = new Gameboard;
+        board = new Gameboard(false);
         board.receiveAttack([0, 0]);
     });
 
@@ -100,7 +100,7 @@ describe("missing a hit", () => {
 describe("sinking a horizontal ship", () => {
     let board;
     beforeAll(() => {
-        board = new Gameboard;
+        board = new Gameboard(false);
         board.place(new Ship(4), [2, 3], false);
         board.receiveAttack([2, 3]);
         board.receiveAttack([2, 4]);
@@ -130,7 +130,7 @@ describe("sinking a horizontal ship", () => {
 describe("sinking a vertical ship", () => {
     let board;
     beforeAll(() => {
-        board = new Gameboard;
+        board = new Gameboard(false);
         board.place(new Ship(4), [3, 2], true);
         board.receiveAttack([3, 2]);
         board.receiveAttack([4, 2]);
@@ -164,7 +164,7 @@ describe("sinking a vertical ship", () => {
 describe("attacking and missing", () => {
     let board;
     beforeAll(() => {
-        board = new Gameboard;
+        board = new Gameboard(false);
         board.receiveAttack([3, 2]);
         board.receiveAttack([4, 2]);
         board.receiveAttack([5, 2]);
@@ -176,5 +176,16 @@ describe("attacking and missing", () => {
         expect(board.opp_view[4][2]).toBe('m');
         expect(board.opp_view[5][2]).toBe('m');
         expect(board.opp_view[6][2]).toBe('m');
+    });
+});
+
+describe("placing 5 random ships", () => {
+    let board;
+    beforeAll(() => {
+        board = new Gameboard;
+    });
+
+    test("there are 5 ships", () => {
+        expect(board.ships.length).toBe(5);
     });
 });

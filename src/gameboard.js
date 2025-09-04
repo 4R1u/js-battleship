@@ -1,7 +1,9 @@
+const Ship = require('./ship');
+
 class Gameboard {
     #board;
     #ships;
-    constructor() {
+    constructor(place_ships = true) {
         this.#board =
             [
                 ['e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e',],
@@ -16,6 +18,14 @@ class Gameboard {
                 ['e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e',],
             ];
         this.#ships = [];
+
+        if (place_ships) {
+            const ships = [new Ship(5), new Ship(4), new Ship(3), new Ship(3), new Ship(2)];
+            for (let i = 0; i < 5; ++i) {
+                while (this.#ships.length == i)
+                    this.place(ships[i], [Math.floor(Math.random() * 10), Math.floor(Math.random() * 10)], (Math.random() < 0.5));
+            }
+        }
     }
 
     place(ship, coords, isVertical) {
