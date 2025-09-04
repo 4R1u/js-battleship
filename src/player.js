@@ -2,7 +2,7 @@ const Gameboard = require("./gameboard");
 
 class Player {
     #board;
-    constructor(board = Gameboard.new) {
+    constructor(board = new Gameboard) {
         this.#board = board;
     }
 
@@ -12,6 +12,14 @@ class Player {
 
     isGameOver() {
         return this.#board.areAllShipsSunken();
+    }
+
+    canAttack(coords) {
+        return this.#board.opp_view[coords[0]][coords[1]] == 'e';
+    }
+
+    get opp_view() {
+        return this.#board.opp_view;
     }
 }
 
