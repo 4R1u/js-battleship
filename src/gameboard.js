@@ -4,6 +4,11 @@ class Gameboard {
     #board;
     #ships;
     constructor(place_ships = true) {
+        // legend:
+        // 'e': empty
+        // 'h': hit
+        // 'm': miss
+        // 's': ship
         this.#board =
             [
                 ['e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e', 'e',],
