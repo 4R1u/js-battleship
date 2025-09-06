@@ -4,6 +4,8 @@
   "description": "Battleship project from The Odin Project",
   "main": "index.js",
   "scripts": {
+    "start": "webpack serve --open --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
     "test": "jest"
   },
   "repository": {
