@@ -14,8 +14,7 @@ const botLogic = (function (doc) {
         const coords = event.target.dataset;
         bot.receiveAttack([coords.i, coords.j]);
         bot.attack(player);
-        boardRenderer.drawBoard(1, player, true);
-        boardRenderer.drawBoard(2, bot, false);
+        boardRenderer.drawBoards();
         event.stopPropagation();
     };
 
@@ -41,8 +40,12 @@ const boardRenderer = (function (doc) {
             }
     };
 
-    return { drawBoard };
+    const drawBoards = function () {
+        drawBoard(1, player, true);
+        drawBoard(2, bot, false);
+    };
+
+    return { drawBoards };
 })(document);
 
-boardRenderer.drawBoard(1, player, true);
-boardRenderer.drawBoard(2, bot, false);
+boardRenderer.drawBoards();
