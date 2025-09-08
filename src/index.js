@@ -12,6 +12,7 @@ const boardRenderer = (function (doc) {
     const drawBoard = function (num, player, own_view) {
         const boardArea = doc.querySelector(`.board-${num}`);
         const playerBoard = own_view ? player.own_view : player.opp_view;
+        boardArea.textContent = "";
         for (let i = 0; i < 10; ++i)
             for (let j = 0; j < 10; ++j) {
                 const littleSquare = doc.createElement("button");
