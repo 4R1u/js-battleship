@@ -16,7 +16,9 @@ const boardRenderer = (function (doc) {
             for (let j = 0; j < 10; ++j) {
                 const littleSquare = doc.createElement("button");
                 littleSquare.type = "button";
-                littleSquare.textContent = playerBoard[i][j];
+                littleSquare.classList.add("square");
+                littleSquare.classList.add(`square-${playerBoard[i][j]}`);
+                littleSquare.classList.add(own_view ? "friendly" : "enemy");
                 boardArea.appendChild(littleSquare);
             }
     };

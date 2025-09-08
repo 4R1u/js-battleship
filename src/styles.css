@@ -7,3 +7,28 @@
     display: flex;
     justify-content: space-around;
 }
+
+.square {
+    width: 30px;
+    height: 30px;
+}
+
+.enemy.square-h {
+    background-color: blue;
+}
+
+.enemy.square-m {
+    background-color: red;
+}
+
+.friendly.square-s {
+    background-color: green;
+}
+
+.friendly.square-h {
+    background-color: red;
+}
+
+.friendly.square-m {
+    background-color: blue;
+}
