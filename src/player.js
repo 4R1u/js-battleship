@@ -21,6 +21,10 @@ class Player {
     get opp_view() {
         return this.#board.opp_view;
     }
+
+    get own_view() {
+        return this.#board.own_view;
+    }
 }
 
 module.exports = Player;

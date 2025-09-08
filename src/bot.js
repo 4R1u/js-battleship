@@ -25,6 +25,14 @@ class Bot {
     isGameOver() {
         return this.#player.isGameOver();
     }
+
+    get opp_view() {
+        return this.#player.opp_view;
+    }
+
+    get own_view() {
+        return this.#player.own_view;
+    }
 }
 
 module.exports = Bot;
