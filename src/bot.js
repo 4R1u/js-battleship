@@ -12,6 +12,8 @@ class Bot {
     }
 
     attack(enemy) {
+        if (enemy.isGameOver())
+            return;
         let coords = [Math.floor(Math.random() * 10), Math.floor(Math.random() * 10)];
         while (!enemy.canAttack(coords))
             coords = [Math.floor(Math.random() * 10), Math.floor(Math.random() * 10)];
