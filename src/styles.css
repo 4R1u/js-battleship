@@ -1,0 +1,9 @@
+.board {
+    display: grid;
+    grid-template: repeat(10, 1fr) / repeat(10, 1fr);
+}
+
+.game-area {
+    display: flex;
+    justify-content: space-around;
+}

@@ -1,3 +1,5 @@
+import "./styles.css";
+
 const Bot = require('./bot');
 const Gameboard = require('./gameboard');
 const Player = require('./player');
