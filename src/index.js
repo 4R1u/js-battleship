@@ -35,7 +35,8 @@ const boardRenderer = (function (doc) {
                 littleSquare.classList.add(own_view ? "friendly" : "enemy");
                 littleSquare.dataset.i = i;
                 littleSquare.dataset.j = j;
-                littleSquare.addEventListener("click", botLogic.botSquareButton);
+                if (!own_view)
+                    littleSquare.addEventListener("click", botLogic.botSquareButton);
                 boardArea.appendChild(littleSquare);
             }
     };
