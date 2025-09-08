@@ -9,6 +9,10 @@ let player = new Player;
 let bot = new Bot;
 
 const botLogic = (function (doc) {
+    const isGameOver = function () {
+        return bot.isGameOver() || player.isGameOver();
+    };
+
     const botSquareButton = function (event) {
         event.preventDefault();
         const coords = event.target.dataset;
@@ -18,7 +22,7 @@ const botLogic = (function (doc) {
         event.stopPropagation();
     };
 
-    return { botSquareButton };
+    return { isGameOver, botSquareButton };
 })(document);
 
 const boardRenderer = (function (doc) {
@@ -35,7 +39,7 @@ const boardRenderer = (function (doc) {
                 littleSquare.classList.add(own_view ? "friendly" : "enemy");
                 littleSquare.dataset.i = i;
                 littleSquare.dataset.j = j;
-                if (!own_view)
+                if (!own_view && playerBoard[i][j] == 'e' && !botLogic.isGameOver())
                     littleSquare.addEventListener("click", botLogic.botSquareButton);
                 boardArea.appendChild(littleSquare);
             }
