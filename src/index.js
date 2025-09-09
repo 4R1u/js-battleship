@@ -53,4 +53,10 @@ const boardRenderer = (function (doc) {
     return { drawBoards };
 })(document);
 
+document.querySelector(".restart").addEventListener("click", () => {
+    player = new Player;
+    bot = new Bot;
+    boardRenderer.drawBoards();
+});
+
 boardRenderer.drawBoards();
